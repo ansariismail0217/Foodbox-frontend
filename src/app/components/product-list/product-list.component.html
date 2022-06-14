@@ -1,3 +1,30 @@
-<p *ngFor="let product of products">
-    {{ product.name }} : {{ product.unitPrice | currency }}
-</p>
+<ul class="item-container">
+    <li *ngFor="let product of products" class="item">
+        <a>
+            <img src="{{ product.imageUrl }}"/>
+            <div class="content">
+                <div class="name">
+                    {{product.name}}
+                </div>
+                <div class="star">
+                    <star-rating [value]="product.rating" [totalstars]="5" checkedcolor="red" uncheckedcolor="black"
+                        size="22px" [readonly]="true">
+                    </star-rating>
+                </div>
+                <div class="product-item-footer">
+                    <div class="cookTime">
+                        <span>🕒</span>
+                        {{product.cookTime}}
+                    </div>
+
+                    <div class="price">
+                        <span>
+                            {{product.unitPrice | currency}}
+                        </span>
+                    </div>
+                </div>
+                <button type="button" class="block">Add to cart</button>
+            </div>
+        </a>
+    </li>
+</ul>

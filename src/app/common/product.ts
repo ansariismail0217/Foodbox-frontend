@@ -5,5 +5,6 @@ export class Product {
     unitPrice!: number;
     imageUrl!:string;
     rating!: number;
+    id!: number;
 
 }

@@ -1,32 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
-import { StarRatingComponent } from 'ng-starrating';
-import { ActivatedRoute } from '@angular/router';
-import { CartItem } from 'src/app/common/cart-item';
-import { CartService } from 'src/app/services/cart.service';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  selector: 'app-manage-products',
+  templateUrl: './manage-products.component.html',
+  styleUrls: ['./manage-products.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ManageProductsComponent implements OnInit {
 
   products!: Product[];
   currentCategoryId!: number;
   searchMode!: boolean;
 
-  // ActivatedRoute is used to access the route parameters in the current active route 
-  // that loaded the component
-  constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     });
   }
-
   listProducts() {
 
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
@@ -80,13 +74,6 @@ export class ProductListComponent implements OnInit {
         this.products = data;
       }
     )
-  }
-
-  addToCart(theProduct: Product){
-    console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
-
-    const theCartItem = new CartItem(theProduct);
-    this.cartService.addToCart(theCartItem);
   }
 
 }

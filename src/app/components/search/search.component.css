@@ -1,0 +1,27 @@
+div{
+    display: block;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-left: 15px;
+  }
+  
+  input{
+    border: none;
+    border-radius: 10rem 0 0 10rem;
+    height: 2.5rem;
+    width: 20rem;
+    background-color: white;
+    padding: 1.2rem;
+    outline: none;
+  }
+  
+  div button{
+    border: none;
+    border-radius: 0 10rem 10rem 0;
+    height: 2.4rem;
+    width: 5rem;
+    background-color: #ff3b3f;
+    color: white;
+    font-weight: 500;
+    outline: none;
+  }
